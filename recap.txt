@@ -1,0 +1,13 @@
+Expressions - Regular Expressions
+Value - to insert into DB
+F - to call database fields
+Func - to perform database functions
+aggregate - base class for all aggregate classes like count, sum, etc.
+annotate - to create new columns in the database
+ExpressionWrapper - Building complex Expressions
+for ex:
+====
+from django.db.models import ExpressionWrapper
+discounted_price = ExpressionWrapper(F('unit_price') * 0.8, output_field= DecimalField())
+query_set = Product.objects.annotate(discounted_price=discounted_price)
+
